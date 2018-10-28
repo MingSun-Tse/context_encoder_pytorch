@@ -13,7 +13,7 @@ def load_image(filename, size=None, scale=None):
 
 
 def save_image(filename, data):
-    img = data.clone().add(1).div(2).mul(255).clamp(0, 255).numpy()
+    img = data.cpu().clone().add(1).div(2).mul(255).clamp(0, 255).numpy()
     img = img.transpose(1, 2, 0).astype("uint8")
     img = Image.fromarray(img)
     img.save(filename)
